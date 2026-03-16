@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
   res.send(
-    '<body style="background-color: #7FbBFF; font-family: Arial, sans-serif;"><h1 style="color: #15202b; text-align: center;">Hello, World!</h1></body>',
+    '<body style="background-color: #7FbBFF; font-family: Arial, sans-serif;"><h1 style="color: #15202b; text-align: center;">IQ Smart Deals</h1></body>',
   )
 })
 
