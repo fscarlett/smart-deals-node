@@ -2,39 +2,72 @@ import mongoose from 'mongoose'
 
 const dealSchema = new mongoose.Schema(
   {
-    title: {
+    deal_name: {
       type: String,
       required: true,
       trim: true,
+    },
+    deal_slug: {
+      type: String,
+      trim: true,
+    },
+    deal_merchant_name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    merchant_code: {
+      type: String,
+      trim: true,
+    },
+    deal_code: {
+      type: String,
+      trim: true,
+    },
+    is_in_hero: {
+      type: Boolean,
+      default: false,
+    },
+    is_featured: {
+      type: Boolean,
+      default: false,
+    },
+    is_featured_secondary: {
+      type: Boolean,
+      default: false,
+    },
+    deal_pill_text: {
+      type: String,
+      trim: true,
+    },
+    deal_cta_text: {
+      type: String,
+      enum: ['Get Deal', 'Shop Now'],
+      default: 'Get Deal',
+    },
+    coupon_type: {
+      type: String,
+      enum: ['$10', '$4', '17%', '20%', '30%'],
     },
     description: {
       type: String,
       trim: true,
     },
-    originalPrice: {
-      type: Number,
-      required: true,
-    },
-    discountedPrice: {
-      type: Number,
-      required: true,
-    },
-    discount: {
-      type: Number,
-      default: 0,
-    },
     category: {
       type: String,
       trim: true,
     },
-    expiryDate: {
+    startDate: {
+      type: Date,
+    },
+    endDate: {
       type: Date,
     },
     isActive: {
       type: Boolean,
       default: true,
     },
-    link: {
+    deal_url: {
       type: String,
       trim: true,
     },
