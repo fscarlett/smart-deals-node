@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import { connectDB } from './src/config/db.js'
 
 import dealsRoutes from './src/routes/dealsRoutes.js'
+import categoriesRoutes from './src/routes/categoriesRoutes.js'
 
 dotenv.config()
 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/deals', dealsRoutes)
+app.use('/categories', categoriesRoutes)
 
 // Health check
 app.get('/health', (req, res) => {
