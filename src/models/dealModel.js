@@ -71,6 +71,34 @@ const dealSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    logo_img_url: {
+      type: String,
+      trim: true,
+    },
+    logo_bg_color: {
+      type: String,
+      trim: true,
+    },
+    img_thumbnail_url: {
+      type: String,
+      trim: true,
+    },
+    img_full_url: {
+      type: String,
+      trim: true,
+    },
+    img_mob_url: {
+      type: String,
+      trim: true,
+    },
+    deal_copy_desktop: {
+      type: String,
+      trim: true,
+    },
+    deal_copy_mob: {
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: true },
 )
