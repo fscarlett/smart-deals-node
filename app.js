@@ -18,16 +18,20 @@ app.use(express.urlencoded({ extended: true }))
 // Routes
 app.get('/', (req, res) => {
   res.send(
-    '<body style="background-color: #7FbBFF; font-family: Arial, sans-serif;"><h1 style="color: #15202b; text-align: center;">IQ Smart Deals</h1></body>',
+    '<body style="background-color: #7FbBFF; font-family: Arial, sans-serif;"><p style="color: #15202b; text-align: center;">IQ Smart Deals</p></body>',
   )
 })
 
-app.use('/deals', dealsRoutes)
-app.use('/categories', categoriesRoutes)
+app.use('/api/v1/deals', dealsRoutes)
+app.use('/api/v1/categories', categoriesRoutes)
 
 // Health check
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'Server is healthy' })
+  res.status(200).json({
+    status: 'ok',
+    uptime: process.uptime(), // Uptime in seconds
+    timestamp: Date.now(),
+  })
 })
 
 app.listen(PORT, () => {
