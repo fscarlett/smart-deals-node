@@ -54,8 +54,13 @@ const dealSchema = new mongoose.Schema(
       trim: true,
     },
     category: {
-      type: String,
-      trim: true,
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Category',
+        },
+      ],
+      default: [],
     },
     startDate: {
       type: Date,
