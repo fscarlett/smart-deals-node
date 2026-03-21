@@ -2,27 +2,29 @@ import mongoose from 'mongoose'
 
 const dealSchema = new mongoose.Schema(
   {
-    deal_name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
     deal_slug: {
       type: String,
       trim: true,
+      required: true,
+      unique: true,
+      maxLength: 100,
+      minLength: 3,
     },
-    deal_merchant_name: {
+    merchant_display_name: {
       type: String,
       required: true,
       trim: true,
+      maxLength: 100,
     },
     merchant_code: {
       type: String,
       trim: true,
+      maxLength: 100,
     },
     deal_code: {
       type: String,
       trim: true,
+      maxLength: 100,
     },
     is_in_hero: {
       type: Boolean,
@@ -36,9 +38,16 @@ const dealSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    deal_cashback_percent: {
+      type: Number,
+      min: 0.1,
+      max: 50,
+      default: 1,
+    },
     deal_pill_text: {
       type: String,
       trim: true,
+      maxLength: 30,
     },
     deal_cta_text: {
       type: String,
@@ -52,6 +61,7 @@ const dealSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
+      maxLength: 1000,
     },
     category: {
       type: [
@@ -75,6 +85,7 @@ const dealSchema = new mongoose.Schema(
     deal_url: {
       type: String,
       trim: true,
+      maxLength: 1000,
     },
     logo_img_url: {
       type: String,

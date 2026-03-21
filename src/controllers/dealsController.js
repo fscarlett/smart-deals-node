@@ -1,14 +1,14 @@
 import Deal from '../models/dealModel.js'
 
 const ALLOWED_DEAL_FIELDS = [
-  'deal_name',
   'deal_slug',
-  'deal_merchant_name',
+  'merchant_display_name',
   'merchant_code',
   'deal_code',
   'is_in_hero',
   'is_featured',
   'is_featured_secondary',
+  'deal_cashback_percent',
   'deal_pill_text',
   'deal_cta_text',
   'coupon_type',
@@ -48,10 +48,10 @@ export const createDeal = async (req, res) => {
   try {
     const payload = pickDealFields(req.body)
 
-    if (!payload.deal_name || !payload.deal_merchant_name) {
+    if (!payload.deal_slug || !payload.merchant_display_name) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide deal_name and deal_merchant_name',
+        message: 'Please provide deal_slug and merchant_display_name',
       })
     }
 
@@ -76,7 +76,7 @@ export const createDeal = async (req, res) => {
 // Get all deals
 export const getAllDeals = async (req, res) => {
   try {
-    const { isActive, category, deal_slug, deal_merchant_name } = req.query
+    const { isActive, category, deal_slug, merchant_display_name } = req.query
 
     const filter = {}
 
@@ -92,8 +92,8 @@ export const getAllDeals = async (req, res) => {
       filter.deal_slug = deal_slug
     }
 
-    if (deal_merchant_name) {
-      filter.deal_merchant_name = deal_merchant_name
+    if (merchant_display_name) {
+      filter.merchant_display_name = merchant_display_name
     }
 
     const deals = await Deal.find(filter)
