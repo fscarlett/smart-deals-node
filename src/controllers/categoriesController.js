@@ -3,13 +3,13 @@ import Category from '../models/categoryModel.js'
 // Create a new category
 export const createCategory = async (req, res) => {
   try {
-    const { category_name, category_slug, description, isActive, img_url } =
+    const { category_display_name, category_slug, category_order, isActive } =
       req.body
 
-    if (!category_name || !category_slug) {
+    if (!category_display_name || !category_slug) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide category_name and category_slug',
+        message: 'Please provide category_display_name and category_slug',
       })
     }
 
@@ -22,11 +22,10 @@ export const createCategory = async (req, res) => {
     }
 
     const newCategory = new Category({
-      category_name,
+      category_display_name,
       category_slug,
-      description,
+      category_order,
       isActive,
-      img_url,
     })
 
     const savedCategory = await newCategory.save()
@@ -56,7 +55,9 @@ export const getAllCategories = async (req, res) => {
       filter.isActive = isActive === 'true'
     }
 
-    const categories = await Category.find(filter).sort({ category_name: 1 })
+    const categories = await Category.find(filter).sort({
+      category_display_name: 1,
+    })
 
     res.status(200).json({
       success: true,
@@ -102,7 +103,7 @@ export const getCategoryById = async (req, res) => {
 export const updateCategory = async (req, res) => {
   try {
     const { id } = req.params
-    const { category_name, category_slug, description, isActive, img_url } =
+    const { category_display_name, category_slug, category_order, isActive } =
       req.body
 
     const category = await Category.findById(id)
@@ -124,11 +125,11 @@ export const updateCategory = async (req, res) => {
       }
     }
 
-    if (category_name) category.category_name = category_name
+    if (category_display_name)
+      category.category_display_name = category_display_name
     if (category_slug) category.category_slug = category_slug
-    if (description) category.description = description
+    if (category_order !== undefined) category.category_order = category_order
     if (isActive !== undefined) category.isActive = isActive
-    if (img_url) category.img_url = img_url
 
     const updatedCategory = await category.save()
 
