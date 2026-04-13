@@ -63,6 +63,7 @@ export const getAllCategories = async (req, res) => {
       success: true,
       data: categories,
     })
+    console.log('categories:', categories)
   } catch (error) {
     res.status(500).json({
       success: false,
