@@ -35,6 +35,7 @@ export const createCategory = async (req, res) => {
       message: 'Category created successfully',
       data: savedCategory,
     })
+    console.log('category created successfully' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -63,7 +64,7 @@ export const getAllCategories = async (req, res) => {
       success: true,
       data: categories,
     })
-    console.log('categories:', categories)
+    console.log('categories fetched successfully' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -91,6 +92,7 @@ export const getCategoryById = async (req, res) => {
       success: true,
       data: category,
     })
+    console.log('category fetched successfully' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -139,6 +141,7 @@ export const updateCategory = async (req, res) => {
       message: 'Category updated successfully',
       data: updatedCategory,
     })
+    console.log('category updated successfully' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -167,6 +170,7 @@ export const deleteCategory = async (req, res) => {
       message: 'Category deleted successfully',
       data: category,
     })
+    console.log('category deleted successfully' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,

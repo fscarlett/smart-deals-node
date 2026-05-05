@@ -64,6 +64,7 @@ export const createDeal = async (req, res) => {
       message: 'Deal created successfully',
       data: savedDeal,
     })
+    console.log('deal created successfully ' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -104,6 +105,7 @@ export const getAllDeals = async (req, res) => {
       success: true,
       data: deals,
     })
+    console.log('deals fetched successfully ' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -131,6 +133,7 @@ export const getDealById = async (req, res) => {
       success: true,
       data: deal,
     })
+    console.log('deal fetched successfully ' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -166,6 +169,7 @@ export const updateDeal = async (req, res) => {
       message: 'Deal updated successfully',
       data: updatedDeal,
     })
+    console.log('deal updated successfully ' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -194,6 +198,7 @@ export const deleteDeal = async (req, res) => {
       message: 'Deal deleted successfully',
       data: deal,
     })
+    console.log('deal deleted successfully ' + new Date().toISOString())
   } catch (error) {
     res.status(500).json({
       success: false,
